@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "drive-task",
+    "name": "DriveTask",
     "slug": "drive-task",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.kingwisdom.drivetask"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "74222008-4826-48d9-9001-94a75a39998d"
+      }
     }
   }
 }
