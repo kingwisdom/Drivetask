@@ -3,7 +3,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { cancelNotification, scheduleTaskNotification } from '../utils/notifications';
+import { cancelNotification, scheduleNowTaskNotification, scheduleTaskNotification } from '../utils/notifications';
 import { loadTasks, saveTasks } from '../utils/storage';
 import { Task, createEmptyTask } from '../utils/taskModel';
 
@@ -37,7 +37,8 @@ export default function TaskForm() {
 
         if (task.dueDate) {
             const newNotifId = await scheduleTaskNotification(task.id, task.title, task.dueDate);
-            updatedTask = { ...task, notificationId: newNotifId };
+            const notifId = await scheduleNowTaskNotification(task.id, task.title, task.dueDate);
+            updatedTask = { ...task, notificationId: newNotifId, nowNotificationId: notifId };
         }
 
         const updatedList = id
