@@ -5,6 +5,7 @@ export interface Task {
     dueDate: string | null;
     isComplete: boolean;
     notificationId?: string; // NEW
+    nowNotificationId?: string
 }
 
 
