@@ -27,7 +27,7 @@ export default function HomeScreen() {
         <View className="flex-1 bg-gradient-to-br from-slate-50 to-blue-50">
             {/* Header Section */}
             <View className="px-6 pt-12 pb-6">
-                <Text className="text-3xl font-bold text-slate-800 mb-2">Drive Tasks</Text>
+                <Text className="text-3xl font-bold text-slate-800 mb-2">Tasks</Text>
                 <Text className="text-slate-500 text-base">Stay organized and productive</Text>
             </View>
 
@@ -167,11 +167,11 @@ export default function HomeScreen() {
 
             {/* Floating Action Button */}
             <TouchableOpacity
-                className="absolute bottom-8 right-6 w-16 h-16 from-blue-600 rounded-2xl shadow-lg shadow-blue-500/30 items-center justify-center"
+                className="absolute bottom-8 right-6 items-center justify-center"
                 onPress={() => router.push('/task-form')}
             >
-                <View className="w-40 h-40 bg-blue-100 rounded-full items-center justify-center mr-3">
-                    <Text className="text-2xl p-2">{'➕'}</Text>
+                <View className="rounded-full w-16 h-16 bg-blue-100 items-center justify-center">
+                    <Text className="text-slate-600 text-5xl mb-2">+</Text>
                 </View>
             </TouchableOpacity>
         </View>
