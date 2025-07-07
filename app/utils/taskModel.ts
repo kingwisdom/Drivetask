@@ -2,10 +2,11 @@ export interface Task {
     id: string;
     title: string;
     description: string;
-    dueDate: string | null;
+    dueDate: string;
     isComplete: boolean;
     notificationId?: string; // NEW
-    nowNotificationId?: string
+    nowNotificationId?: string;
+    isPriority?: boolean;
 }
 
 
@@ -13,6 +14,7 @@ export const createEmptyTask = (): Task => ({
     id: Date.now().toString(),
     title: '',
     description: '',
-    dueDate: null,
+    dueDate: '',
     isComplete: false,
+    isPriority: true
 });
