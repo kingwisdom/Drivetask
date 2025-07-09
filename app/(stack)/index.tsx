@@ -17,8 +17,10 @@ import {
     UIManager,
     View,
 } from 'react-native';
+import { configureNotifications, scheduleTaskNotification } from '../utils/notifications';
 import { loadTasks, saveTasks } from '../utils/storage';
 import { Task } from '../utils/taskModel';
+
 
 if (Platform.OS === 'android') {
   UIManager.setLayoutAnimationEnabledExperimental?.(true);
@@ -35,6 +37,7 @@ export default function HomeScreen() {
 
   useFocusEffect(
     useCallback(() => {
+      configureNotifications();
       loadTasks().then(setTasks);
     }, [])
   );
@@ -76,6 +79,7 @@ export default function HomeScreen() {
       dueDate: moment().add(1, 'hour').toISOString(),
       isPriority: false,
     };
+    await scheduleTaskNotification(newT.id, newT.title, newT.dueDate);
     const updated = [...tasks, newT];
     animateLayout();
     setTasks(updated);
