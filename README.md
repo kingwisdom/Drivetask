@@ -1,50 +1,153 @@
-# Welcome to your Expo app 👋
+# assets\images\adaptive-icon.png Task Alarm App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, minimalist task manager built with **React Native (Expo)**. Create, edit, and manage tasks with alarms — plus seamless import of tasks from your **Google Calendar**.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+✅ Inline editing of task titles and descriptions  
+✅ Task prioritization ⭐  
+✅ Alarm-style local notifications  
+✅ Date & time picker (AM/PM format)  
+✅ Repeat & Share tasks  
+✅ Import Google Calendar events  
+✅ Offline-friendly (local storage)  
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🖼️ Demo
 
-In the output, you'll find options to open the app in a
+> Coming soon: Add your own GIF or screenshots
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📦 Tech Stack
 
-## Get a fresh project
+- **React Native + Expo**
+- **TypeScript**
+- **AsyncStorage** – local task persistence
+- **@react-native-community/datetimepicker**
+- **expo-notifications** – for alarms
+- **expo-auth-session** – Google sign-in
+- **Google Calendar API**
 
-When you're ready, run:
+---
 
+## 📲 Setup Instructions
+
+### 1. **Clone the Repository**
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/task-alarm-app.git
+cd task-alarm-app
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. **Install Dependencies**
+```bash
+npm install
+# or
+yarn
+```
 
-## Learn more
+### 3. **Setup Google OAuth**
+- Go to [Google Cloud Console](https://console.cloud.google.com/)
+- Enable **Google Calendar API**
+- Create OAuth Client ID for **Web App**
+- Use redirect URI:
+  ```
+  https://auth.expo.io/@your-username/your-app-slug
+  ```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 4. **Add Your Google Credentials**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+In `utils/googleAuth.ts`:
+```ts
+const clientId = 'YOUR_CLIENT_ID.apps.googleusercontent.com';
+```
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 🚀 Run the App
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### In development:
+```bash
+npx expo start
+```
+
+> Scan the QR code with Expo Go (iOS/Android)
+
+---
+
+## 🔔 Notifications
+
+Tasks trigger **alarm-like notifications** when due.  
+You must grant notification permission on first launch.
+
+### Schedule logic:
+- Tasks created or imported will automatically schedule a local alarm
+- Tasks with due date in the past are ignored
+- Cancelling/rescheduling a task will cancel/reschedule its notification
+
+---
+
+## 🔑 Google Calendar Sync
+
+### Import Tasks:
+- Press 📥 `Import Google Calendar` button in the app
+- Sign in with Google
+- Upcoming events are converted into local tasks
+- Tasks retain their due dates and titles
+
+---
+
+## 🧪 Testing
+
+- All task CRUD operations work offline
+- Google Calendar requires an active internet connection
+- Notifications tested on:
+  - Android (alarm trigger, background & foreground)
+  - iOS (make sure to enable notifications in settings)
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── App.tsx
+├── utils/
+│   ├── storage.ts          # load/save tasks
+│   ├── taskModel.ts        # Task type
+│   ├── notification.ts     # Notification scheduling
+│   ├── googleAuth.ts       # OAuth logic
+│   └── calendarService.ts  # Pull calendar events
+├── components/
+│   └── TaskCard.tsx        # (optional) reusable task component
+└── screens/
+    └── HomeScreen.tsx
+```
+
+---
+
+## 📌 Roadmap
+
+- [ ] iCloud / Google Drive sync
+- [ ] Tag-based sorting
+- [ ] Calendar view of tasks
+- [ ] Search and filters
+- [ ] Dark mode toggle
+
+---
+
+## 🧑‍💻 Author
+
+**Afe Kunle**  
+📧 your@email.com  
+🔗 [LinkedIn](https://linkedin.com/in/yourprofile)  
+🐦 [Twitter](https://twitter.com/yourhandle)
+
+---
+
+## 🪪 License
+
+MIT License. Feel free to use, fork, or contribute!
