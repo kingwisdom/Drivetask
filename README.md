@@ -1,4 +1,4 @@
-# assets\images\adaptive-icon.png Task Alarm App
+# Drive Task App
 
 A modern, minimalist task manager built with **React Native (Expo)**. Create, edit, and manage tasks with alarms — plus seamless import of tasks from your **Google Calendar**.
 
